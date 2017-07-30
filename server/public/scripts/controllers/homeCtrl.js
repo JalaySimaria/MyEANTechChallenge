@@ -1,20 +1,16 @@
 var homeCtrl = function($rootScope, CommonFactory, CommonService) {
 	var _this = this;
 	var history_id = '';
+	var blank = document.createElement('canvas');
+	blank.width = canvas.width;
+	blank.height = canvas.height;
 
 	_this.models = {
 		designs : [],
 		history : [],
-		image_id : ''
+		image_id : '',
+		disableActions : true
 	};
-
-	function isCanvasBlank(canvas) {
-		var blank = document.createElement('canvas');
-		blank.width = canvas.width;
-		blank.height = canvas.height;
-
-		return $rootScope.canvas.toDataURL() == blank.toDataURL();
-	}
 
 	_this.getDesigns = function() {
 		CommonFactory.makeRequest('GET', 'getDesigns', {}, function(response) {
@@ -26,6 +22,7 @@ var homeCtrl = function($rootScope, CommonFactory, CommonService) {
 
 	_this.loadDesign = function(design) {
 		_this.models.image_id = design.image_id;
+		_this.models.disableActions = false;
 		history_id = '';
 		CommonFactory.makeRequest('POST', 'getHistory', {
 			image_id : design.image_id
@@ -36,12 +33,14 @@ var homeCtrl = function($rootScope, CommonFactory, CommonService) {
 
 	_this.selectHistory = function(history) {
 		history_id = history.id;
+		_this.models.disableActions = false;
 	};
 
 	_this.addNew = function() {
 		_this.models.history = [];
 		_this.models.image_id = '';
 		history_id = '';
+		_this.models.disableActions = true;
 	};
 
 	_this.saveDesign = function() {
@@ -53,9 +52,14 @@ var homeCtrl = function($rootScope, CommonFactory, CommonService) {
 			image_JSON : JSON.stringify($rootScope.canvas)
 		}, function(response) {
 			_this.models.image_id = response.data.image_id;
+			_this.models.disableActions = false;
 			_this.getDesigns();
 			_this.loadDesign(response.data);
 		}, CommonFactory.commonSuccess);
+	};
+
+	_this.isCanvasEmpty = function(clear) {
+		_this.models.disableActions = clear || $rootScope.canvas.toDataURL() == blank.toDataURL();
 	};
 };
 

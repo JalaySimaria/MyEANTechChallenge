@@ -90,9 +90,9 @@
 								Browse Image <input type="file" class='btn btn-default' file-on-change hidden>
 							</label>
 							<button class="btn btn-block btn-primary" add-text>Add Text</button>
-							<button class="btn btn-block btn-primary" remove-element>Remove Selected Element(s)</button>
-							<button class="btn btn-block btn-primary" clear-canvas>Clear Canvas</button>
-							<button class="btn btn-block btn-primary" ng-click="home.saveDesign()">Save Design</button>
+							<button class="btn btn-block btn-primary" remove-element ng-click="home.isCanvasEmpty()">Remove Selected Element(s)</button>
+							<button class="btn btn-block btn-primary" clear-canvas ng-click="home.isCanvasEmpty(true)">Clear Canvas</button>
+							<button class="btn btn-block btn-primary" ng-disabled="home.models.disableActions" ng-click="home.saveDesign()">Save Design</button>
 						</div>
 					</div>
 				</div>
