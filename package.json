@@ -1,0 +1,34 @@
+{
+  "name": "myean-tech-challenge",
+  "version": "1.0.0",
+  "description": "MyEAN Tech Challenge",
+  "main": "index.js",
+  "scripts": {
+    "prestart": "node ./server/mysqlCheck",
+    "start": "node ./server/app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JalaySimaria/MyEANTechChallenge.git"
+  },
+  "author": {
+    "name": "Jalay Simaria",
+    "email": "jalay.simaria18@yahoo.com",
+    "url": "http://jalay.in/"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JalaySimaria/MyEANTechChallenge/issues"
+  },
+  "homepage": "https://github.com/JalaySimaria/MyEANTechChallenge#readme",
+  "dependencies": {
+    "async": "^2.5.0",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "morgan": "^1.8.2",
+    "multer": "^1.3.0",
+    "mysql2": "^1.3.6",
+    "sequelize": "^4.4.2",
+    "uuid": "^3.1.0"
+  }
+}

@@ -1,0 +1,29 @@
+{
+    "SERVER" : {
+        "WEB" : {
+            "SERVER_HOST_IP" : "localhost",
+            "SERVER_PORT" : 3003
+        },
+        "DB" : {
+            "host" : "localhost",
+            "port" : 3306,
+            "username" : "root",
+            "password" : "",
+            "database" : "myean",
+            "dialect" : "mysql",
+            "define" : {
+                "underscored" : true,
+                "freezeTableName" : true,
+                "charset" : "utf8",
+                "collate" : "utf8_general_ci"
+            },
+            "dialectOptions" : {
+                "multipleStatements" : true
+            },
+            "logging" : false
+        }
+    },
+    "VIEWS" : {
+        "VIEW_HOME" : "/views/home.html"
+    }
+}
