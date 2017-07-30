@@ -15,7 +15,7 @@ var homeCtrl = function($rootScope, CommonFactory, CommonService) {
 	_this.getDesigns = function() {
 		CommonFactory.makeRequest('GET', 'getDesigns', {}, function(response) {
 			_this.models.designs = response.designs;
-		}, CommonFactory.commonSuccess);
+		}, CommonFactory.errorCallback);
 	};
 
 	_this.getDesigns();
@@ -28,7 +28,7 @@ var homeCtrl = function($rootScope, CommonFactory, CommonService) {
 			image_id : design.image_id
 		}, function(response) {
 			_this.models.history = response.designs;
-		}, CommonFactory.commonSuccess);
+		}, CommonFactory.errorCallback);
 	};
 
 	_this.selectHistory = function(history) {
@@ -55,7 +55,7 @@ var homeCtrl = function($rootScope, CommonFactory, CommonService) {
 			_this.models.disableActions = false;
 			_this.getDesigns();
 			_this.loadDesign(response.data);
-		}, CommonFactory.commonSuccess);
+		}, CommonFactory.errorCallback);
 	};
 
 	_this.isCanvasEmpty = function(clear) {

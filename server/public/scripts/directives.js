@@ -17,6 +17,8 @@ angular.module('app.directives', [])
 							var a = $rootScope.canvas.setActiveObject(oImg);
 							var dataURL = $rootScope.canvas.toDataURL({format: 'png', quality: 0.8});
 						});
+						scope.home.models.disableActions = false;
+						scope.$apply();
 					};
 					reader.readAsDataURL(file);
 				});
@@ -54,6 +56,8 @@ angular.module('app.directives', [])
 			link: function (scope, element, attrs) {
 				element.bind('click', function(event) {
 					$rootScope.canvas.add(new fabric.IText('Double Tap and Type'));
+					scope.home.models.disableActions = false;
+					scope.$apply();
 				});
 			}
 		};
