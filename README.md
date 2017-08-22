@@ -1,4 +1,4 @@
-# MyEAN Tech Challenge
+# MyEAN Tech Challenge ([Live Demo](https://myean.herokuapp.com/))
 *MyEAN -> MySQL + ExpressJS + AngularJS + NodeJS*
 
 Prerequisites :
